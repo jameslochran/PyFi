@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load totaltag %}
+{% load humanize %}
+
+<div class="container">
+  <div id="wrapper">
+    <div class="normalheader transition">
+
+      <div class="hpanel">
+        <div class="panel-body">
+          <a class="small-header-action" href="#">
+            <div class="clip-header">
+              <i class="fa fa-arrow-up"></i>
+            </div>
+          </a>
+          <!-- <div id="hbreadcrumb" class="pull-right m-t-lg">
+                      <div class="project-action m-t-md">
+
+                        <div class="btn-group">
+                          {% if user.id == portfolio.user.id %}
+                          <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Edit
+                          <i class="fa fa-pencil"></i></a>
+                          <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Delete</a>
+                          <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-xs btn-default"> Add Stock</a>
+                          <a href="{% url 'detail' portfolio.id %}" class="btn btn-xs btn-default"> Analysis</a>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div> -->
+          <h2 class="font-light m-b-xs">
+            {{ portfolio.title }}
+          </h2>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <img src="{% static 'images/buying-and-selling-stocks-frequently.png' %}" style="width:100%" alt="">
+            </div>
+            <div class="col-md-2">.</div>
+
+
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-sm-4">
+              <div class="chart_container">
+                  <canvas id="pie-chart" </canvas>
+
+              </div>
+
+            </div>
+            <div class="col-sm-4">
+              <div class="chart_container2">
+                  <canvas id="pie-chart2" </canvas>
+
+              </div>
+
+
+            </div>
+            <div class="col-sm-4">
+              <div class="chart_container3">
+                  <canvas id="pie-chart3" </canvas>
+
+              </div>
+
+            </div
+
+          </div> -->
+
+
+          <!-- <small> Author: {{ portfolio.user.username }} {{ portfolio.id }}</small> -->
+
+
+
+          <div id="hbreadcrumb" class="pull-right m-t-lg">
+            <div class="project-action m-t-md">
+
+              <div class="btn-group">
+                {% if user.id == portfolio.user.id %}
+                <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Edit
+                  <i class="fa fa-pencil"></i></a>
+                <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Delete</a>
+                <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-xs btn-default"> Add Stock</a>
+                <a href="{% url 'detail' portfolio.id %}" class="btn btn-xs btn-default"> Analysis</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="jumbotron">
+          <span class="category-{{ portfolio.type }} card-img-top "></span>
+    <h1>{{ portfolio.title }} </h1>
+
+    <h4 class='text-muted'> Author: {{ portfolio.user.username }} {{ portfolio.id }}</h4>
+    <!-- <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-outline-primary btn-sm"><span class="oi oi-caret-top"></span> {{hall.votes_total}}</button> </a> -->
+      <!-- {{ stock.port.id }}
+
+    {% if user.id == portfolio.user.id %}
+    <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-secondary">Edit</a>
+    <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-success">Add stock</a>
+    <a href="{% url 'detail' portfolio.id %}" class="btn btn-info">Analysis</a>
+
+    {% endif %}
+
+  <br>
+  </div> -->
+      <br>
+      <div class="panel-body no-back">
+        <p> <strong>Use the table below to </strong>adjust your individual investments within the {{ portfolio.title }} portfolio.
+          Click edit to change the ticker, purchase date, count, or unit cost for each investment. Clicking delete will remove the investment
+          from your {{ portfolio.title }} portfolio.
+        </p>
+      </div>
+
+
+      <br>
+      <div class="hpanel">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Ticker Symbol</th>
+                  <th scope="col">Purchase date</th>
+                  <th scope="col"># of Shares</th>
+                  <th scope="col">Purchase Price</th>
+                  <th scope="col">Current Price</th>
+                  <th scope="col">Current Value</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              {% for stock in portfolio.stock_set.all %}
+              <tr>
+                <th scope="row">{{ stock.ticker }}</th>
+                <td>{{ stock.acq_date }}</td>
+                <td>{{ stock.count|floatformat:2|intcomma }}</td>
+                <td>{{ stock.unit_cost|floatformat:2|intcomma }}</td>
+                <td>{{ stock.price|floatformat:2|intcomma }}</td>
+                <td> {% multiply stock.price stock.count %} </td>
+                <td><a href="{% url 'update_stock' stock.id %}" class="btn btn-xs btn-default">Edit</a>&nbsp;<a href="{% url 'delete_stock' stock.id %}" class="btn btn-xs btn-default">Delete</a></td>
+
+
+              </tr>
+
+              {% endfor%}
+
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

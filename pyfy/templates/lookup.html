@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div id="wrapper">
+    <div class="normalheader transition">
+  <div class="jumbotron">
+      <h2>Add a stock or fund to {{ port.title }}</h2>
+  </div>
+
+
+This is the form to user
+<form action="{% url 'lookup'  %}" class="form-inline my-2 my-lg-0" method = "POST">
+      {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Get Stock Quote" aria-label="Search"
+    name="ticker">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Stock Quote</button>
+  </form>
+
+
+
+<br>
+        {% if api %}
+          {% if api == "Error...." %}
+          There was a problem with the ticker symbol.
+          Please try again..
+
+          {% else %}
+          <h1>{{api.companyName}}</h1><br/>
+          Price: ${{api.latestPrice}}<br/>
+          Previous Close: ${{api.previousClose}}<br/>
+          Market Cap: $ {{api.marketCap}}<br/>
+          YTD change: {{api.ytdChange}}<br/>
+          52 week high: ${{api.week52High}}<br/>
+          52 week low: ${{api.week52Low}}<br/>
+
+         {% endif %}
+
+        {% endif %}
+
+</div>
+</div>
+</div>
+
+
+{% endblock %}

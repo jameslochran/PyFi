@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div id="wrapper">
+    <div class="normalheader transition">
+
+<br>
+<div class="jumbotron">
+  <form action="{% url 'research'  %}" class="form-inline my-2 my-lg-0" method = "POST">
+        {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Company Name " aria-label="Search"
+      name="companyName">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Enter the company name</button>
+    </form>
+</div>
+
+<br>
+
+
+{% autoescape off %}
+   {{ ticker }}
+{% endautoescape %}
+
+
+  <br>
+
+
+
+
+</div>
+</div>
+</div>
+
+{% endblock %}

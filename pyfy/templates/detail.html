@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load humanize %}
+  {% load static %}
+
+
+<div class="container">
+  <div id="wrapper">
+    <div class="normalheader transition">
+      <div class="hpanel">
+                   <div class="panel-body">
+                      <a class="small-header-action" href="#">
+                         <div class="clip-header">
+                            <i class="fa fa-arrow-up"></i>
+                         </div>
+                      </a>
+
+                      <h2 class="font-light m-b-xs">
+                         How's portfolio performing?
+                      </h2>
+                    <div class="row">
+                      <div class="col-md-2"></div>
+                      <div class="col-md-8">
+                        <img src="{% static 'images/Saving_moneyvalue.png' %}" style="width:100%" alt="">
+                      </div>
+                      <div class="col-md-2">.</div>
+
+
+                    </div>
+
+                   </div>
+                </div>
+<br>
+
+<h2>
+<span class="font-uppercase">At at glance view:</span>
+</h2>
+<div class="panel-body no-back">
+                    <p>
+                       The <strong>portfolio value </strong>is the current
+                       value of the stocks, bonds, mutual funds, etc that make up the portfolio based on the current price. The
+                       <strong>comparison value </strong>is the value of your portfolio if you had invested the same amount of money in the S&P 500,
+                       as you did in the {{ title }} portfolio. The <strong>difference</strong> column shows how your portfolio
+                       is performing against the SP 500 over the time period in $'s.
+                    </p>
+                 </div>
+<br>
+<div class="hpanel">
+<div class="panel-body">
+                       <div class="table-responsive">
+<table class="table table-bordered table-striped" cellspacing="1" cellpadding="1">
+  <thead>
+    <tr>
+      <th scope="col">Portfolio Title</th>
+      <th scope="col">Portfolio Value</th>
+      <th scope="col">Profit / Loss </th>
+      <th scope="col">Comparison Value</th>
+      <th scope="col">Difference</th>
+        <!-- <th scope="col">Return</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ title }}</th>
+      <td>$ {{ portfolio_value|floatformat:2|intcomma }}</td>
+      <td> {% if profit_loss < 0 %}
+        <div class="NegativeTransaction">
+        {% else %}
+        <div class="PositiveTransaction">
+        {% endif %}
+        $ {{ profit_loss|floatformat:2|intcomma }}
+        </div>
+      </td>
+      <td>$ {{ pme_value|floatformat:2|intcomma }} </td>
+      <td>
+      {% if val_diff < 0 %}
+               <div class="NegativeTransaction">
+               {% else %}
+               <div class="PositiveTransaction">
+               {% endif %}
+                  ${{  val_diff|floatformat:2|intcomma }}
+               </div>
+
+               </td>
+      <!-- <td> {{ ret_diff|floatformat:2|intcomma }}</td> -->
+    </tr>
+
+      </tbody>
+      </table>
+</div>
+</div>
+</div>
+<br>
+
+<h3>
+  <span class="font-uppercase">How are the investments in your portfolio performing?</span>
+</h3>
+<div class="panel-body no-back">
+                    <p>
+                       The <strong>Basic, Advanced and Annual Return </strong>tabs contain tables with detailed
+                       breakouts of each investments performace.
+                    </p>
+                 </div>
+
+
+
+<div class="hpanel">
+                     <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> Basic </a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false"> Advanced </a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false"> Annual Return</a></li>
+                     </ul>
+                     <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                           <div class="panel-body">
+                             <p>Basic performance analyis examines how each investment has performed since purchased compared to the Public Market Equivant investment, SP 500. </p>
+                             {% autoescape off %}
+                                {{ ticker }}
+                             {% endautoescape %}
+                           </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                           <div class="panel-body">
+                             <p>Advanced performance analysis examines the historical performance of each investment. Click the buttons below to learn more about these metrics.</p>
+
+                                <button type="button" class="btn btn-sm btn-default" data-container="body" data-toggle="popover" data-placement="left" data-title="Sharpe Ratio" data-content="A measure that indicates the average return minus the risk-free return divided by the standard deviation of return on an investment." data-original-title="" title="" aria-describedby="popover486135">
+                                Sharpe
+                                </button>
+                                <button type="button" class="btn btn-sm btn-default" data-container="body" data-toggle="popover" data-placement="top" data-title="Beta" data-content="Beta is a measure of a stock's volatility in relation to the market. By definition, the market has a beta of 1.0, and individual stocks are ranked according to how much they deviate from the market. A stock that swings more than the market over time has a beta above 1.0." data-original-title="" title="" aria-describedby="popover486135">
+                                Beta
+                                </button>
+                                <button type="button" class="btn btn-sm btn-default" data-container="body" data-toggle="popover" data-placement="right" data-title="Alpha" data-content="Alpha, one of the most commonly quoted indicators of investment performance, is defined as the excess return on an investment relative to the return on a benchmark index. For example, if you invest in a stock, and it returns 20% while the S&P 500 earned 5%, the alpha is 15." data-original-title="" title="" aria-describedby="popover486135">
+                                Alpha
+                                </button>
+                                <p></p>
+                             {% autoescape off %}
+                                {{ html }}
+                             {% endautoescape %}
+                           </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                           <div class="panel-body">
+                             <p>The annual portfolio return analysis examines how your entire portfolio has performed on an annualized basis. </p>
+                             {% autoescape off %}
+                                {{ annual_table }}
+                             {% endautoescape %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+<br>
+<h3>
+  <span class="font-uppercase">Breakdown</span>
+  </h3>
+  <div class="panel-body no-back">
+                      <p>
+                         Vizualize how your portfolio is constructed and it's annual return verses the SP 500 year
+                      </p>
+                   </div>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="port-chart"></div>
+      <script type="text/javascript">
+        new Highcharts.Chart({{port_chart|safe}});
+      </script>
+
+
+
+
+    </div>
+    <div class="col-md-6">
+      <div id="ann-chart"></div>
+      <script type="text/javascript">
+        new Highcharts.Chart({{ann_chart|safe}});
+      </script>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<br>
+
+<br>
+<div id="ret-chart"></div>
+<script type="text/javascript">
+  new Highcharts.Chart({{ret_chart|safe}});
+</script> -->
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+{% endblock %}

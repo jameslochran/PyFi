@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+  <div id="wrapper">
+    <div class="normalheader">
+      <div class="hpanel">
+        <div class="panel-body">
+          <a class="small-header-action" href="#">
+            <div class="clip-header">
+              <i class="fa fa-arrow-up"></i>
+            </div>
+          </a>
+
+          <!-- <small>List of profolio's.</small> -->
+          <h2 class="font-light m-b-xs">{{ user.username }}'s Portfolio's </h2>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <h2>Add your investments!</h2>
+              <!-- <img src="{% static 'images/My-Financial-Strategy-PPT-nr-2.png' %}" style="width:100%" alt=""> -->
+            </div>
+            <div class="col-md-2">.</div>
+
+
+          </div>
+  <br>
+          <!-- <div class="text-center">
+            <a href="{% url 'create_portfolio'%}" class="btn btn-primary">Create a new Portfolio</a>
+          </div> -->
+Don't know the symbol for a stock - <a href="{% url 'research' %}">Click here</a>
+
+        </div>
+      </div>
+
+  <div class="hpanel">
+    <div class="panel-body">
+
+
+
+          <form method="POST" >
+            {% csrf_token %}
+
+            <div style="display: none;">
+
+            {{ formset }} </div>
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticker Symbol</th>
+                    <th scope="col"># of Shares</th>
+                    <th scope="col">Purchase Price</th>
+                    <th scope="col">Purchase Date (YYYY-M-D)</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+
+
+            {% for form in formset %}
+            <tr>
+            <td>{{ form.ticker }}</td>
+            <td>{{ form.count }}</td>
+            <td>{{ form.unit_cost }}</td>
+            <td>{{ form.acq_date }} </td>
+            <td>{{ form.DELETE }} Delete</td>
+
+</tr>
+            {% endfor %}
+
+
+</table>
+        <button type="submit" class="btn btn-primary">Add Stock</button>
+        </form>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+<div class="col-md-6">
+Don't know the symbol for a stock - <a href="{% url 'research' %}">Click here</a>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
