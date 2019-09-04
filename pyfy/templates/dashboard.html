@@ -3,10 +3,11 @@
 {% load static %}
 
   {% load humanize %}
-<!-- <div class="container"> -->
+
+
   <div id="wrapper">
     <div class="normalheader ">
-  
+
       <div class="hpanel">
         <div class="panel-body">
           <a class="small-header-action" href="#">
@@ -15,7 +16,6 @@
             </div>
           </a>
 
-          <!-- <small>List of profolio's.</small> -->
           <h2 class="font-light m-b-xs">{{ user.username }}'s Portfolio's </h2>
           <div class="row">
             <div class="col-md-2"></div>
@@ -30,8 +30,6 @@
           <div class="text-center">
             <a href="{% url 'create_portfolio'%}" class="btn btn-primary">Create a new Portfolio</a>
           </div>
-
-
         </div>
       </div>
       <br>
@@ -44,11 +42,8 @@
           <div class="col-lg-6">
             <div class="hpanel hgreen">
               <div class="panel-body no-shadow th-border">
-                <!-- <span class="label label-success pull-right">NEW</span> -->
                 <div class="row">
                   <div class="col-sm-7">
-                    <!-- <span class="category-{{ item.type }} card-img-top ">
-    </span> -->
                     <h4><a href="{% url 'detail_portfolio' item.id %}">{{ item.title }}</a></h4>
                     <p> {{ item.description }}</p>
 
@@ -60,24 +55,20 @@
 
                       <div class="btn-group">
 
-                        <a href="{% url 'update_portfolio' item.id %}" class="btn btn-xs btn-default"> Edit</a>
-                        <a href="{% url 'delete_portfolio' item.id %}" class="btn btn-xs btn-default"> Delete</a>
+                        <!-- <a href="{% url 'update_portfolio' item.id %}" class="btn btn-xs btn-default"> Edit</a>
+                        <a href="{% url 'delete_portfolio' item.id %}" class="btn btn-xs btn-default"> Delete</a> -->
+                        <a href="{% url 'add_stock' item.id %}" class="btn btn-xs btn-default"> Add Stock</a>
                         <a href="{% url 'detail' item.id %}" class="btn btn-xs btn-default"> Analysis</a>
                       </div>
                     </div>
                     <br>
                     <div class="project-value">
                       <div class="stats-icon text-success">
-                                <i class="pe-7s-graph1 text-info fa-4x"></i>
+                        <span class="category-{{ item.type }}">
+                                <!-- <i class="pe-7s-graph1 text-info fa-4x"></i> -->
                             </div>
 
                       <h2 class="text-success">
-
-
-
-
-
-
                       </h2>
                     </div>
                   </div>
@@ -85,37 +76,12 @@
               </div>
 
             </div>
-
-
-
-            <!-- <div class="card-footer">
-      <a href="{% url 'delete_portfolio' item.id %}" class="btn btn-danger btn-sm">Delete</a>
-      <a href="{% url 'update_portfolio' item.id %}" class="btn btn-secondary btn-sm">Edit</a>
-      <a href="{% url 'add_stock' item.id%}" class="btn btn-success btn-sm">Add Stock</a>
-      <br>
-
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div> -->
 <br>
           </div>
-
-
           {% endfor %}
         </div>
       </div>
-
-
     </div>
-
-
-
-
-
-
-  <!-- </div> -->
-  <!-- </div>
-</div> -->
-
+    </div>
 
   {% endblock %}

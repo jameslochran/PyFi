@@ -106,7 +106,7 @@ def add_Stock(request, pk):
     formset = StockFormset(instance=portfolio)
 
 
-    return render(request, 'add_stock.html', {'formset': formset})
+    return render(request, 'add_stock.html', {'formset': formset,'portfolio':portfolio})
 
 
 
@@ -256,12 +256,23 @@ def sp500_Current(d):
 
 
 def getSP500Unit(d):
+    US_BUSINESS_DAY = CustomBusinessDay(calendar=USFederalHolidayCalendar())
+    result = d - 1 * US_BUSINESS_DAY
+    pday = result.to_pydatetime().date()
+    print(pday)
 
     try:
-        sp_cost = sp_500_histdata.loc[d]
+        data = yf.download("^GSPC", start=pday, end=pday)
+        data.drop(columns=['Open', 'High', 'Low', 'Volume', 'Close'], inplace=True)
     except Exception as e:
-        sp_cost = "Error - Please ensure you have entered a valid trading date for your stock purchase date"
-    return sp_cost['Adj Close']
+        data = "Error - there was an issue with getting the closing price for the SP500."
+    return data['Adj Close'][0]
+
+    # try:
+    #     sp_cost = sp_500_histdata.loc[d]
+    # except Exception as e:
+    #     sp_cost = "Error - Please ensure you have entered a valid trading date for your stock purchase date"
+    # return sp_cost['Adj Close']
 
 def ann_risk_return(returns_df):
     summary = returns_df.agg(["mean", "std"]).T

@@ -1,5 +1,61 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600');
 
+
+.category-Retirement {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/retirement.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Education {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/student.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Savings {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/piggy-bank.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Vacation {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/sun-umbrella.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-House {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/house.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Investment {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/earnings.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+
 .chart_container {
   position: absolute;
   margin: auto;
@@ -1636,7 +1692,8 @@ body.fullscreen-panel-mode {
 }
 
 .projects .hpanel h4 a {
-    color: #6a6c6f
+    /* color: #6a6c6f */
+    color: #0d52d7
 }
 
 .projects .project-people img {
@@ -3767,7 +3824,8 @@ body.page-small.show-sidebar #wrapper {
 
 a {
     cursor: pointer;
-    color: #34495e
+    /* color: #34495e */
+    color: #0d52d7
 }
 
 a:hover,a:focus {

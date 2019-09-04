@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
+<div class="container">
   <div id="wrapper">
-    <div class="normalheader">
+    <div class="normalheader transition">
       <div class="hpanel">
         <div class="panel-body">
           <a class="small-header-action" href="#">
@@ -12,38 +12,32 @@
             </div>
           </a>
 
-          <!-- <small>List of profolio's.</small> -->
-          <h2 class="font-light m-b-xs">{{ user.username }}'s Portfolio's </h2>
+          <h2 class="font-light m-b-xs">Add investments to {{ portfolio.title }}'s Portfolio!</h2>
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <h2>Add your investments!</h2>
               <!-- <img src="{% static 'images/My-Financial-Strategy-PPT-nr-2.png' %}" style="width:100%" alt=""> -->
             </div>
             <div class="col-md-2">.</div>
 
 
           </div>
-  <br>
-          <!-- <div class="text-center">
-            <a href="{% url 'create_portfolio'%}" class="btn btn-primary">Create a new Portfolio</a>
-          </div> -->
-Don't know the symbol for a stock - <a href="{% url 'research' %}">Click here</a>
+          <br>
 
         </div>
       </div>
 
-  <div class="hpanel">
-    <div class="panel-body">
+
+        <div class="panel-body">
 
 
 
-          <form method="POST" >
+          <form method="POST">
             {% csrf_token %}
 
             <div style="display: none;">
 
-            {{ formset }} </div>
+              {{ formset }} </div>
             <div class="table-responsive">
               <table class="table table-hover table-bordered table-striped">
                 <thead>
@@ -51,38 +45,42 @@ Don't know the symbol for a stock - <a href="{% url 'research' %}">Click here</a
                     <th scope="col">Ticker Symbol</th>
                     <th scope="col"># of Shares</th>
                     <th scope="col">Purchase Price</th>
-                    <th scope="col">Purchase Date (YYYY-M-D)</th>
+                    <th scope="col">Purchase Date (2017-04-27)</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
 
 
-            {% for form in formset %}
-            <tr>
-            <td>{{ form.ticker }}</td>
-            <td>{{ form.count }}</td>
-            <td>{{ form.unit_cost }}</td>
-            <td>{{ form.acq_date }} </td>
-            <td>{{ form.DELETE }} Delete</td>
+                {% for form in formset %}
+                <tr>
+                  <td>{{ form.ticker }}</td>
+                  <td>{{ form.count }}</td>
+                  <td>{{ form.unit_cost }}</td>
+                  <td>{{ form.acq_date }} </td>
+                  <td>{{ form.DELETE }} Delete</td>
 
-</tr>
-            {% endfor %}
-
-
-</table>
-        <button type="submit" class="btn btn-primary">Add Stock</button>
-        </form>
+                </tr>
+                {% endfor %}
 
 
+              </table>
+              <button type="submit" class="btn btn-primary">Add Stock</button>
+          </form>
 
 
-      </div>
+
+
+        </div>
+        </div>
+        </div>
+
+
+      <br>
+
+      <h3>Don't know the symbol for a stock or fund? - <a href="{% url 'research' %}">Click here</a></h3>
+
+
     </div>
-  </div>
-
-<div class="col-md-6">
-Don't know the symbol for a stock - <a href="{% url 'research' %}">Click here</a>
-
   </div>
 </div>
 

@@ -15,20 +15,6 @@
               <i class="fa fa-arrow-up"></i>
             </div>
           </a>
-          <!-- <div id="hbreadcrumb" class="pull-right m-t-lg">
-                      <div class="project-action m-t-md">
-
-                        <div class="btn-group">
-                          {% if user.id == portfolio.user.id %}
-                          <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Edit
-                          <i class="fa fa-pencil"></i></a>
-                          <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Delete</a>
-                          <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-xs btn-default"> Add Stock</a>
-                          <a href="{% url 'detail' portfolio.id %}" class="btn btn-xs btn-default"> Analysis</a>
-                            {% endif %}
-                        </div>
-                      </div>
-                    </div> -->
           <h2 class="font-light m-b-xs">
             {{ portfolio.title }}
           </h2>
@@ -41,37 +27,6 @@
 
 
           </div>
-
-          <!-- <div class="row">
-            <div class="col-sm-4">
-              <div class="chart_container">
-                  <canvas id="pie-chart" </canvas>
-
-              </div>
-
-            </div>
-            <div class="col-sm-4">
-              <div class="chart_container2">
-                  <canvas id="pie-chart2" </canvas>
-
-              </div>
-
-
-            </div>
-            <div class="col-sm-4">
-              <div class="chart_container3">
-                  <canvas id="pie-chart3" </canvas>
-
-              </div>
-
-            </div
-
-          </div> -->
-
-
-          <!-- <small> Author: {{ portfolio.user.username }} {{ portfolio.id }}</small> -->
-
-
 
           <div id="hbreadcrumb" class="pull-right m-t-lg">
             <div class="project-action m-t-md">
@@ -90,25 +45,6 @@
         </div>
       </div>
 
-
-      <!-- <div class="jumbotron">
-          <span class="category-{{ portfolio.type }} card-img-top "></span>
-    <h1>{{ portfolio.title }} </h1>
-
-    <h4 class='text-muted'> Author: {{ portfolio.user.username }} {{ portfolio.id }}</h4>
-    <!-- <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-outline-primary btn-sm"><span class="oi oi-caret-top"></span> {{hall.votes_total}}</button> </a> -->
-      <!-- {{ stock.port.id }}
-
-    {% if user.id == portfolio.user.id %}
-    <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-danger">Delete</a>
-    <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-secondary">Edit</a>
-    <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-success">Add stock</a>
-    <a href="{% url 'detail' portfolio.id %}" class="btn btn-info">Analysis</a>
-
-    {% endif %}
-
-  <br>
-  </div> -->
       <br>
       <div class="panel-body no-back">
         <p> <strong>Use the table below to </strong>adjust your individual investments within the {{ portfolio.title }} portfolio.

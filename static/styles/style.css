@@ -1,18 +1,77 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600');
 
-td[data-monetary-amount] {
-  text-align: right;
+
+.category-Retirement {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/retirement.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Education {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/student.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Savings {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/piggy-bank.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Vacation {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/sun-umbrella.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-House {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/house.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
+}
+.category-Investment {
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("/static/images/earnings.png");
+  background-position: 0 0;
+  margin-left: 25%;
+  background-repeat: no-repeat;
 }
 
-/* make the cells output their value */
-td[data-monetary-amount]:after {
-  content: attr(data-monetary-amount);
+.chart_container {
+  position: absolute;
+  margin: auto;
+  height: 15vh;
+  width: 20vw;
 }
 
-/* make debit amounts show up in red */
-td[data-monetary-amount^="-"]:after {
+
+
+.NegativeTransaction {
   color: red;
-}data-monetary-amount
+}
+
+.PositiveTransaction {
+  color: green;
+}
 
 .h-modal-icon {
     font-size: 66px
@@ -1633,7 +1692,8 @@ body.fullscreen-panel-mode {
 }
 
 .projects .hpanel h4 a {
-    color: #6a6c6f
+    /* color: #6a6c6f */
+    color: #0d52d7
 }
 
 .projects .project-people img {
@@ -3764,7 +3824,8 @@ body.page-small.show-sidebar #wrapper {
 
 a {
     cursor: pointer;
-    color: #34495e
+    /* color: #34495e */
+    color: #0d52d7
 }
 
 a:hover,a:focus {
