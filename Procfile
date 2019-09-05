@@ -1,2 +1,2 @@
-release: python managed.py migrate
+release: python manage.py migrate
 web: gunicorn pyinvest.wsgi
