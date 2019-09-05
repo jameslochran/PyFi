@@ -6,6 +6,7 @@ coverage==4.5.4
 decorator==4.4.0
 dj-database-url==0.5.0
 Django==2.2.4
+django-heroku==0.3.1
 django-pandas==0.6.1
 django-tables2-bootstrap4==2.0.0b5
 django-widget-tweaks==1.4.5
