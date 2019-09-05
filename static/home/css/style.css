@@ -976,7 +976,8 @@ article {
     display: block;
     width: 70px;
     height: 60px;
-    float: left; }
+    float: left;
+  }
   .f-blog .desc h2 {
     font-size: 14px;
     margin-bottom: 5px; }
@@ -1088,7 +1089,7 @@ input[type="text"] {
 #colorlib-footer {
   background: #303133;
   color: rgba(255, 255, 255, 0.6) !important;
-  padding-top: 6em; }
+  padding-top: 2em; }
   #colorlib-footer .colorlib-widget p {
     font-size: 13px; }
   @media screen and (max-width: 768px) {
@@ -1128,7 +1129,8 @@ input[type="text"] {
     font-weight: 700; }
   #colorlib-footer .copy {
     background: #262626;
-    padding: 7em 0; }
+    /* padding: 7em 0;  */
+  }
     #colorlib-footer .copy p {
       margin-bottom: 0;
       color: #fff;
