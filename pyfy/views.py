@@ -69,7 +69,7 @@ def dashboard(request):
 def dash_Total(request, pk):
     df1 = get_Port_Total(pk)
     portfolio_value = df1['total'].sum()
-    print(portfolio_value)
+    # print(portfolio_value)
     return render(request,'dashboard.html', {'portfolio_value':portfolio_value})
 
 

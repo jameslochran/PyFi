@@ -15,8 +15,8 @@ GIT Version control
 
 
 Run these commands the first time you.
-$ git config --global user.name "jameslochran"
-$ git config --global user.email "jlochran@gmail.com"
+$ git config --global user.name ""
+$ git config --global user.email ""
 $ git config --global push.default matching
 $ git config --global alias.co checkout
 $ git init
