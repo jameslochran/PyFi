@@ -72,8 +72,14 @@
 										<li><a href="work-grid-without-text.html">Works grid w/o text</a></li>
 									</ul>
 								</li> -->
-								<li><a href="services.html">About</a></li>
+							
+
+								{% if user.is_authenticated %}
+									<li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+									<li><a href="{% url 'logout' %}">Logout</a></li>
+								{% else %}
 								<li><a href="{% url 'login' %}">Login</a></li>
+								{% endif %}
 							</ul>
 						</div>
 					</div>
@@ -91,7 +97,10 @@
 				<div class="row row-pb-md">
 					<div class="col-md-3 colorlib-widget">
 						<h4>About PyFi</h4>
-						<p>...</p>
+						<p>PyFi is a tool to answer the question -
+							<br>
+							<em>Am I being paid for the	risks I'm taking with my money.</em>
+						</p>
 						<p>
 							<!-- <ul class="colorlib-social-icons">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -105,9 +114,9 @@
 						<h4>Information</h4>
 						<p>
 							<ul class="colorlib-footer-links">
-								<li><a href="#"><i class="icon-check"></i> Home</a></li>
+								<li><a href="{% url 'home' %}"><i class="icon-check"></i> Home</a></li>
 								<!-- <li><a href="#"><i class="icon-check"></i> Gallery</a></li> -->
-								<li><a href="#"><i class="icon-check"></i> About</a></li>
+								<!-- <li><a href="#"><i class="icon-check"></i> About</a></li> -->
 								<!-- <li><a href="#"><i class="icon-check"></i> Blog</a></li>
 								<li><a href="#"><i class="icon-check"></i> Contact</a></li>
 								<li><a href="#"><i class="icon-check"></i> Privacy</a></li> -->
@@ -116,40 +125,42 @@
 					</div>
 
 					<div class="col-md-3 colorlib-widget">
-						<!-- <h4>Recent Blog</h4>
+						<h4>Side projects</h4>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-1.jpg);">
+							<!-- <img class="blog-img" src="{% static 'images/cinema.png' %}" -->
+							<a href="blog.html" class="blog-img" >
 							</a>
+
 							<div class="desc">
-								<h2><a href="blog.html">Photoshoot Technique</a></h2>
-								<p class="admin"><span>30 March 2018</span></p>
+								<h2><a href="http://haystack.pythonanywhere.com/dashboard/">Video Whiz</a></h2>
+								<p class="admin"><span>30 March 2019</span></p>
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-2.jpg);">
+							<a href="blog.html" class="blog-img" >
 							</a>
 							<div class="desc">
-								<h2><a href="blog.html">Camera Lens Shoot</a></h2>
-								<p class="admin"><span>30 March 2018</span></p>
+								<h2><a href="http://haystack.pythonanywhere.com/dashboard/">Needles</a></h2>
+								<p class="admin"><span>1 January 2019</span></p>
 							</div>
 						</div>
 						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url(images/blog-3.jpg);">
+							<a href="blog.html" class="blog-img" >
 							</a>
 							<div class="desc">
-								<h2><a href="blog.html">Imahe the biggest photography studio</a></h2>
-								<p class="admin"><span>30 March 2018</span></p>
+								<h2><a href="http://jlochran.com">Portfolio site</a></h2>
+								<p class="admin"><span>10 October 2018</span></p>
 							</div>
-						</div> -->
+						</div>
 					</div>
 
 					<div class="col-md-3 colorlib-widget">
 						<h4>Contact Info</h4>
 						<ul class="colorlib-footer-links">
 							<li>Lovely, <br> York Maine</li>
-							<li><a href="#"><i class="icon-phone"></i> </a></li>
-							<li><a href="#"><i class="icon-envelope"></i> </a></li>
-							<li><a href="#"><i class="icon-location4"></i></a></li>
+							<li><a href="#"><i class="icon-phone"></i>207-752-0365 </a></li>
+							<li><a href="#"><i class="icon-envelope"></i>jlochran@gmail.com </a></li>
+							<!-- <li><a href="#"><i class="icon-location4"></i></a></li> -->
 						</ul>
 					</div>
 				</div>
@@ -163,6 +174,8 @@
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --><br>
 								Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a>
+<br>
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div> -->
 							</p>
 						</div>
 					</div>

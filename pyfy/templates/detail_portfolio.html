@@ -33,8 +33,7 @@
 
               <div class="btn-group">
                 {% if user.id == portfolio.user.id %}
-                <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Edit
-                  <i class="fa fa-pencil"></i></a>
+                <a href="{% url 'update_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Edit</a>
                 <a href="{% url 'delete_portfolio' portfolio.id %}" class="btn btn-xs btn-default"> Delete</a>
                 <a href="{% url 'add_stock' portfolio.id %}" class="btn btn-xs btn-default"> Add Stock</a>
                 <a href="{% url 'detail' portfolio.id %}" class="btn btn-xs btn-default"> Analysis</a>

@@ -58,7 +58,12 @@
                         <!-- <a href="{% url 'update_portfolio' item.id %}" class="btn btn-xs btn-default"> Edit</a>
                         <a href="{% url 'delete_portfolio' item.id %}" class="btn btn-xs btn-default"> Delete</a> -->
                         <a href="{% url 'add_stock' item.id %}" class="btn btn-xs btn-default"> Add Stock</a>
+                        {% if item.id in has_stocks %}
                         <a href="{% url 'detail' item.id %}" class="btn btn-xs btn-default"> Analysis</a>
+                        {% else %}
+
+                        {% endif %}
+
                       </div>
                     </div>
                     <br>

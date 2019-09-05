@@ -50,8 +50,19 @@ def home(request):
 @login_required
 def dashboard(request):
     ports = Portfolio.objects.filter(user=request.user)
+    has_stocks = []
+    for port in ports:
+        port_id = port.id
+        qs1 = Stock.objects.filter(portfolio_id = port_id)
+        if(not(qs1)):
+            pass
+        else:
+            has_stocks.append(port_id)
 
-    return render(request,'dashboard.html', {'ports':ports})
+
+
+
+    return render(request,'dashboard.html', {'ports':ports, 'has_stocks':has_stocks})
 
 
 
@@ -508,7 +519,7 @@ def priceLookup(request, pk):
 class UpdatePortfolio(LoginRequiredMixin, generic.UpdateView):
     model = Portfolio
     template_name = 'update_portfolio.html'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'type']
     success_url = reverse_lazy('dashboard')
 
     def get_object(self):
