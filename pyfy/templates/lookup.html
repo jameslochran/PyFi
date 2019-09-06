@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load humanize %}
 <div class="container">
   <div id="wrapper">
     <div class="normalheader transition">
   <div class="jumbotron">
-      <h2>Add a stock or fund to {{ port.title }}</h2>
+      <h2>What to see how a stock or fund has been performing?</h2>
+      <p>Enter the ticker below to see -
+        <ul>
+          <li>Current price</li>
+          <li>Market cap</li>
+          <li>52 week high & low</li>
+          <li>And more.</li>
+        </ul></p>
   </div>
 
 
-This is the form to user
+<p>Enter ticker symbol</p>
 <form action="{% url 'lookup'  %}" class="form-inline my-2 my-lg-0" method = "POST">
       {% csrf_token %}
     <input class="form-control mr-sm-2" type="search" placeholder="Get Stock Quote" aria-label="Search"
     name="ticker">
-    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Stock Quote</button>
+    <button class="btn btn-success" type="submit">Stock Quote</button>
   </form>
 
 
@@ -25,6 +33,56 @@ This is the form to user
           Please try again..
 
           {% else %}
+    <div class="hpanel">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Company Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Previous Close</th>
+                  <th scope="col">Market Cap</th>
+                  <th scope="col">Year to date change</th>
+                  <th scope="col">52 week high</th>
+                  <th scope="col">52 week low</th>
+                </tr>
+              </thead>
+
+              <tr>
+                <th scope="row">{{api.companyName}}</th>
+                <td>${{ api.latestPrice|floatformat:2|intcomma }}</td>
+                <td>${{ api.previousClose|floatformat:2|intcomma }}</td>
+                <td>${{ api.marketCap|floatformat:2|intcomma }}</td>
+                <!-- <td>{{ api.ytdChange|floatformat:2 }}</td> -->
+                <td> {% if api.ytdChange < 0 %}
+                  <div class="NegativeTransaction">
+                  {% else %}
+                  <div class="PositiveTransaction">
+                  {% endif %}
+                  $ {{ api.ytdChange|floatformat:2|intcomma }}
+                  </div>
+                </td>
+                <td> ${{ api.week52High|floatformat:2|intcomma }} </td>
+                <td> ${{ api.week52Low|floatformat:2|intcomma }} </td>
+
+
+              </tr>
+
+
+
+
+            </table>
+
+                    {% endif %}
+                      {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+
+          <!--
           <h1>{{api.companyName}}</h1><br/>
           Price: ${{api.latestPrice}}<br/>
           Previous Close: ${{api.previousClose}}<br/>
@@ -33,10 +91,7 @@ This is the form to user
           52 week high: ${{api.week52High}}<br/>
           52 week low: ${{api.week52Low}}<br/>
 
-         {% endif %}
-
-        {% endif %}
-
+-->
 </div>
 </div>
 </div>

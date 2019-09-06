@@ -12,7 +12,11 @@
           <div class="animate-box">
             <h2>Track how your investments are performing</h2>
             <p>PYFI allows you to create various portfolio's and see how <br>they've performed over time against the SP500.</p>
+          {% if user.is_authenticated %}
+            <p> <a href="{% url 'create_portfolio'%}" class="btn btn-primary">Create a new Portfolio</a></p> 
+          {% else %}
             <p><a href="{% url 'signup' %}" class="btn btn-primary btn-lg btn-custom">Sign up</a></p>
+          {% endif %}
             <p class="text-center">It's free</p>
           </div>
         </div>

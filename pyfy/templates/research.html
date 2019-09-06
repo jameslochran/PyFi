@@ -4,16 +4,19 @@
 <div class="container">
   <div id="wrapper">
     <div class="normalheader transition">
-
+      <h2>Don't know the ticker symbol for the company or fund you'd like to add to your portfilio?</h2>
+      <p>Use the search form below to find the ticker symbol. Just enter the name and click What's my ticker?</p>
+      <small>Search uses partial match so the more you add the better the results will be :-)</small>
 <br>
-<div class="jumbotron">
-  <form action="{% url 'research'  %}" class="form-inline my-2 my-lg-0" method = "POST">
-        {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="Company Name " aria-label="Search"
-      name="companyName">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Enter the company name</button>
-    </form>
-</div>
+<br>
+
+
+<form action="{% url 'research'  %}" class="form-inline my-2 my-lg-0" method = "POST">
+      {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Company Name " aria-label="Search"
+    name="companyName">
+    <button class="btn btn-success" type="submit">What's my ticker?</button>
+  </form>
 
 <br>
 
