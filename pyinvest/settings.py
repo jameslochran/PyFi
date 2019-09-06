@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'pyinvest.wsgi.application'
 #
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pyinvest',
+#         'USER': 'jlochran',
+#         'PASSWORD': 'OmlGml01' ,
+#         'HOST': '127.0.0.1',
+#         'PORT' : '5432',
 #     }
 # }
 # DATABASES = { 'default': dj_database_url.config() }
@@ -133,7 +137,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Activate Django-Heroku.
+#Activate Django-Heroku.
 django_heroku.settings(locals())
 
 #hack to get around ssl issue locally

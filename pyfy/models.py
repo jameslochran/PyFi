@@ -46,15 +46,15 @@ class Stock(models.Model):
         price = 0
         quant = self.count
         ticker = self.ticker
-        api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ ticker +"/quote?token=pk_5a6bfc8f3d3d405f910aec024cc2bc14")
+        api_request = requests.get('https://cloud.iexapis.com/stable/stock/'+ ticker +'/quote?token=pk_5a6bfc8f3d3d405f910aec024cc2bc14')
 
         try:
             api = json.loads(api_request.content)
-            price = api["latestPrice"]
+            price = api['latestPrice']
 
 
         except Exception as e:
-            api = "Error...."
+            api = 'Error....'
 
 
         return price
