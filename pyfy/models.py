@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from datetime import date
 
 # Create your models here.
+#fix issue with Postgres
 class Portfolio(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
@@ -21,7 +22,7 @@ class Portfolio(models.Model):
                 (house, 'House'),
                 (investment, 'Investment')
                 )
-    type = models.CharField(("Portfolio Type"), max_length=100, choices=PORTTYPE, default='Retirement')
+    type = models.CharField(('Portfolio Type'), max_length=100, choices=PORTTYPE, default='Retirement')
 
     def __str__(self):
     	return self.title
