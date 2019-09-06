@@ -2,11 +2,16 @@
 
 import os
 import dj_database_url
-# import django_heroku
+import dotenv
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -15,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e94c%=1st8eig4wuo5!xgu7&$c2-1ef3&ie6651ba$y!$i&c9l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['obscure-retreat-28586.herokuapp.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['obscure-retreat-28586.herokuapp.com']
+ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -74,15 +79,16 @@ WSGI_APPLICATION = 'pyinvest.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+#
 # DATABASES = {
-#     # 'default': dj_database_url.config()
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = { 'default': dj_database_url.config() }
+# DATABASES = { 'default': dj_database_url.config() }
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 
@@ -128,4 +134,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
+
+#hack to get around ssl issue locally
+
+del DATABASES['default']['OPTIONS']['sslmode']
